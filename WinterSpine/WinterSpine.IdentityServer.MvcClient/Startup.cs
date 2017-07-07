@@ -66,7 +66,7 @@ namespace WinterSpine.IdentityServer.MvcClient
                 ClientId = "WinterSpine.IdentityServer.MvcClient",
                 SaveTokens = true
             };
-            options.Scope.Add("email");
+            options.Scope.Add("email"); // client requesting additioal claims
             app.UseOpenIdConnectAuthentication(options);
 
             app.UseStaticFiles();
