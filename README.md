@@ -5,6 +5,8 @@ IdentityServer based on,
 * [ASP.NET Core Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity) 
 * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 
+This Repo contains the IdentityServer and a MVC Client for testing.
+
 ## Database Migrations
 ```
 * Drop Database
