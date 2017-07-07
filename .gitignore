@@ -262,4 +262,4 @@ __pycache__/
 
 # Unwanted Project Files
 /WinterSpine/WinterSpine.IdentityServer/wwwroot/lib
-/WinterSpine/WinterSpine.Web/wwwroot/lib
+/WinterSpine/WinterSpine.IdentityServer.MvcClient/wwwroot/lib
