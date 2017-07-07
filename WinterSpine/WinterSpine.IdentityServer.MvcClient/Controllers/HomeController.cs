@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
-namespace WinterSpine.Web.Controllers
+namespace WinterSpine.IdentityServer.MvcClient.Controllers
 {
     public class HomeController : Controller
     {
