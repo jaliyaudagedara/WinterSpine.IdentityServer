@@ -68,6 +68,7 @@ namespace WinterSpine.IdentityServer.Configs
                     Password = "P@ssw0rd!",
                     Claims =
                     {
+                        new Claim(JwtClaimTypes.Role, "Admin"),
                         new Claim(JwtClaimTypes.Name, "Jaliya Udagedara"),
                         new Claim(JwtClaimTypes.GivenName, "Jaliya"),
                         new Claim(JwtClaimTypes.FamilyName, "Udagedara"),
