@@ -63,7 +63,7 @@ namespace WinterSpine.IdentityServer.Configs
             {
                 new TestUser()
                 {
-                    SubjectId = "1",
+                    SubjectId = Guid.NewGuid().ToString(),
                     Username = "admin",
                     Password = "P@ssw0rd!",
                     Claims =
@@ -74,42 +74,9 @@ namespace WinterSpine.IdentityServer.Configs
                         new Claim(JwtClaimTypes.Email, "jaliya.udagedara@gmail.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://jaliyaudagedara.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServerConstants.ClaimValueTypes.Json)
+                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
                     }
-                },
-                new TestUser()
-                {
-                    SubjectId = "818727",
-                    Username = "alice",
-                    Password = "P@ssw0rd!",
-                    Claims =
-                    {
-                        new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServerConstants.ClaimValueTypes.Json)
-                    }
-                },
-                new TestUser()
-                {
-                    SubjectId = "88421113",
-                    Username = "bob",
-                    Password = "P@ssw0rd!",
-                    Claims =
-                    {
-                        new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Bob"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServerConstants.ClaimValueTypes.Json),
-                        new Claim("location", "somewhere"),
-                    }
-                },
+                }
             };
         }
     }

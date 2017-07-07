@@ -117,37 +117,38 @@ namespace WinterSpine.IdentityServer
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
-
-                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-                context.Database.Migrate();
-
-                if (!context.Clients.Any())
-                {
-                    foreach (var client in Config.GetClients())
-                    {
-                        context.Clients.Add(client.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
-                if (!context.IdentityResources.Any())
-                {
-                    foreach (var resource in Config.GetIdentityResources())
-                    {
-                        context.IdentityResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
+                serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>().Database.Migrate();
                 serviceScope.ServiceProvider.GetRequiredService<ApplicationIdentityDbContext>().Database.Migrate();
 
-                var usermanager = serviceScope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-
-                if (!usermanager.Users.Any())
+                var configurationDbContext = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                foreach (var client in Config.GetClients())
                 {
-                    foreach (var user in Config.GetUsers())
+                    var _client = configurationDbContext.Clients.FirstOrDefault(c => c.ClientId == client.ClientId);
+                    if (_client == null)
                     {
-                        var identityUser = new IdentityUser(user.Username)
+                        configurationDbContext.Clients.Add(client.ToEntity());
+                    }
+                }
+                configurationDbContext.SaveChanges();
+
+                foreach (var resource in Config.GetIdentityResources())
+                {
+                    var _resource = configurationDbContext.IdentityResources.FirstOrDefault(c => c.Name == resource.Name);
+                    if (_resource == null)
+                    {
+                        configurationDbContext.IdentityResources.Add(resource.ToEntity());
+                    }
+                }
+                configurationDbContext.SaveChanges();
+
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                foreach (var user in Config.GetUsers())
+                {
+                    var identityUser = userManager.FindByNameAsync(user.Username).Result;
+
+                    if (identityUser == null)
+                    {
+                        identityUser = new IdentityUser(user.Username)
                         {
                             Id = user.SubjectId
                         };
@@ -162,7 +163,7 @@ namespace WinterSpine.IdentityServer
                             });
                         }
 
-                        usermanager.CreateAsync(identityUser, user.Password).Wait();
+                        userManager.CreateAsync(identityUser, user.Password).Wait();
                     }
                 }
             }

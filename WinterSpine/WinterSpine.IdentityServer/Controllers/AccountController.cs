@@ -28,7 +28,7 @@ namespace WinterSpine.IdentityServer.Controllers
     [SecurityHeaders]
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _users;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly IIdentityServerInteractionService _interaction;
         private readonly AccountService _account;
 
@@ -36,9 +36,9 @@ namespace WinterSpine.IdentityServer.Controllers
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IHttpContextAccessor httpContextAccessor,
-            UserManager<IdentityUser> users)
+            UserManager<IdentityUser> userManager)
         {
-            _users = users;
+            _userManager = userManager;
             _interaction = interaction;
             _account = new AccountService(interaction, httpContextAccessor, clientStore);
         }
@@ -57,9 +57,9 @@ namespace WinterSpine.IdentityServer.Controllers
         {
             if (ModelState.IsValid)
             {
-                var identityUser = await _users.FindByNameAsync(model.Username);
+                var identityUser = await _userManager.FindByNameAsync(model.Username);
 
-                if (identityUser != null && await _users.CheckPasswordAsync(identityUser, model.Password))
+                if (identityUser != null && await _userManager.CheckPasswordAsync(identityUser, model.Password))
                 {
                     AuthenticationProperties props = null;
                     // only set explicit expiration here if persistent. 
@@ -138,7 +138,7 @@ namespace WinterSpine.IdentityServer.Controllers
                     Id = Guid.NewGuid().ToString()
                 };
 
-                await _users.CreateAsync(identityUser, model.Password);
+                await _userManager.CreateAsync(identityUser, model.Password);
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
