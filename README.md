@@ -9,15 +9,15 @@ This Repo contains the IdentityServer and a MVC Client for testing.
 
 ## Database Migrations
 ```
-* Drop Database
+# Drop Database
 dotnet ef database drop -c ApplicationIdentityDbContext
 
-* Initial Migration
+# Initial Migration
 dotnet ef migrations add InitialPersistedGrantDb -c PersistedGrantDbContext -o Migrations/PersistedGrantDb
 dotnet ef migrations add InitialConfigurationDb -c ConfigurationDbContext -o Migrations/ConfigurationDb
 dotnet ef migrations add InitialApplicationIdentityDb -c ApplicationIdentityDbContext -o Migrations/ApplicationIdentityDb
 
-* Update Database
+# Update Database
 dotnet ef database update -c PersistedGrantDbContext
 dotnet ef database update -c ConfigurationDbContext
 dotnet ef database update -c ApplicationIdentityDbContext
