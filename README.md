@@ -3,7 +3,7 @@
 IdentityServer based on,
 * [IdentityServer4](http://docs.identityserver.io/en/release/)
 * [ASP.NET Core Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity) 
-* [EF Core](https://docs.microsoft.com/en-us/ef/core/)
+* [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 
 ## Database Migrations
 ```
