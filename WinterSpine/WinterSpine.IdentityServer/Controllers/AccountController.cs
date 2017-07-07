@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using WinterSpine.IdentityServer.Attributes;
 using WinterSpine.IdentityServer.Configs;
+using Microsoft.AspNetCore.Authorization;
+using WinterSpine.IdentityServer.ViewModels.Account;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
@@ -42,7 +44,7 @@ namespace WinterSpine.IdentityServer.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Login(string returnUrl)
+        public async Task<IActionResult> Login(string returnUrl = null)
         {
             var vm = await _account.BuildLoginViewModelAsync(returnUrl);
 
@@ -113,6 +115,35 @@ namespace WinterSpine.IdentityServer.Controllers
             await HttpContext.Authentication.SignOutAsync();
 
             return View("LoggedOut", vm);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Register(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var identityUser = new IdentityUser(model.UserName)
+                {
+                    Id = Guid.NewGuid().ToString()
+                };
+
+                await _users.CreateAsync(identityUser, model.Password);
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
     }
 }

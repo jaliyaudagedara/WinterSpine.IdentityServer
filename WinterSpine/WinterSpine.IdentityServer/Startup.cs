@@ -21,6 +21,7 @@ using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace WinterSpine.IdentityServer
 {
@@ -79,6 +80,27 @@ namespace WinterSpine.IdentityServer
 
             app.UseIdentity();
             app.UseIdentityServer();
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "Cookies"
+            });
+
+            var options = new OpenIdConnectOptions
+            {
+                AuthenticationScheme = "oidc",
+                SignInScheme = "Cookies",
+
+                Authority = "http://localhost:10000",
+                RequireHttpsMetadata = false,
+
+                ClientId = "WinterSpine.IdentityServer.Web",
+                SaveTokens = true
+            };
+            options.Scope.Add("email");
+            app.UseOpenIdConnectAuthentication(options);
 
             app.UseStaticFiles();
 

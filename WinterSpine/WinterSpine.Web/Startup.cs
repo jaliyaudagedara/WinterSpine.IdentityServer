@@ -63,7 +63,7 @@ namespace WinterSpine.Web
                 Authority = "http://localhost:10000",
                 RequireHttpsMetadata = false,
 
-                ClientId = "WinterSpine.Web",
+                ClientId = "WinterSpine.Test.MvcClient",
                 SaveTokens = true
             };
             options.Scope.Add("email");

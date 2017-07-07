@@ -43,13 +43,16 @@
             <div class="navbar-collapse collapse">
                 @if (name != null)
                 {
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
-                            </ul>
-                        </li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @name</a></li>
+                        <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
                     </ul>
                 }
             </div>

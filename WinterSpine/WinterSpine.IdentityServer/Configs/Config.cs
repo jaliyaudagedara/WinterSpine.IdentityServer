@@ -28,8 +28,22 @@ namespace WinterSpine.IdentityServer.Configs
             {
                 new Client()
                 {
-                    ClientId = "WinterSpine.Web",
-                    ClientName = "WinterSpine Web App",
+                    ClientId = "WinterSpine.IdentityServer.Web",
+                    ClientName = "WinterSpine IdentityServer Web App",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RedirectUris = {  "http://localhost:10000/signin-oidc" },
+                    PostLogoutRedirectUris ={ "http://localhost:10000/signout-callback-oidc" },
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email
+                    }
+                },
+                new Client()
+                {
+                    ClientId = "WinterSpine.Test.MvcClient",
+                    ClientName = "WinterSpine Test Client Mvc Web App",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     RedirectUris = {  "http://localhost:10001/signin-oidc" },
                     PostLogoutRedirectUris ={ "http://localhost:10001/signout-callback-oidc" },
