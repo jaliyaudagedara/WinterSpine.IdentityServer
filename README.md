@@ -14,7 +14,7 @@ This Repo contains the IdentityServer and a MVC Client for testing.
 
 * Initial IdentityServer4 Setup for OIDC - **DONE**
 * Integrate with ASP.NET Core Identity and EF Core - **DONE**
-* Initial Testing Client Application - **Done**
+* Initial Testing Client Application - **DONE**
 * Configure CI, setup a demo public environment
 * Admin Functionalities
     * CRUD IdentityServer Configurations
@@ -22,6 +22,6 @@ This Repo contains the IdentityServer and a MVC Client for testing.
     * CRUD Users
         * Defining Scopes for Users
 * User Functionalities
-    * Register (not as a admin as there is a inbuilt admin user)
+    * Register (not as a admin as there is a inbuilt admin user) - **INITIATED**
         * May be send an email to Admin and upon approval, user can move ahead with login and user specific functionalities
     * View/Update/Delete Claims
