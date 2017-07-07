@@ -142,29 +142,32 @@ namespace WinterSpine.IdentityServer
                 configurationDbContext.SaveChanges();
 
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-                foreach (var user in Config.GetUsers())
+                var adminUser = Config.GetAdminUser();
+
+                var identityAdminUser = new IdentityUser(adminUser.Username)
                 {
-                    var identityUser = userManager.FindByNameAsync(user.Username).Result;
+                    Id = adminUser.SubjectId
+                };
 
-                    if (identityUser == null)
+                foreach (var claim in adminUser.Claims)
+                {
+                    identityAdminUser.Claims.Add(new IdentityUserClaim<string>
                     {
-                        identityUser = new IdentityUser(user.Username)
-                        {
-                            Id = user.SubjectId
-                        };
+                        UserId = identityAdminUser.Id,
+                        ClaimType = claim.Type,
+                        ClaimValue = claim.Value
+                    });
+                }
 
-                        foreach (var claim in user.Claims)
-                        {
-                            identityUser.Claims.Add(new IdentityUserClaim<string>
-                            {
-                                UserId = identityUser.Id,
-                                ClaimType = claim.Type,
-                                ClaimValue = claim.Value,
-                            });
-                        }
-
-                        userManager.CreateAsync(identityUser, user.Password).Wait();
-                    }
+                var existingAdminUser = userManager.FindByNameAsync(adminUser.Username).Result;
+                if (existingAdminUser == null)
+                {
+                    userManager.CreateAsync(identityAdminUser, adminUser.Password).Wait();
+                }
+                else
+                {
+                    userManager.DeleteAsync(existingAdminUser).Wait();
+                    userManager.CreateAsync(identityAdminUser, adminUser.Password).Wait();
                 }
             }
         }

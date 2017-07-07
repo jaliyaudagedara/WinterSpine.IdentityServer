@@ -57,26 +57,23 @@ namespace WinterSpine.IdentityServer.Configs
             };
         }
 
-        public static List<TestUser> GetUsers()
+        public static TestUser GetAdminUser()
         {
-            return new List<TestUser>
+            return new TestUser()
             {
-                new TestUser()
+                SubjectId = Guid.Empty.ToString(),
+                Username = "admin",
+                Password = "P@ssw0rd!",
+                Claims = new List<Claim>()
                 {
-                    SubjectId = Guid.NewGuid().ToString(),
-                    Username = "admin",
-                    Password = "P@ssw0rd!",
-                    Claims =
-                    {
-                        new Claim(JwtClaimTypes.Role, "Admin"),
-                        new Claim(JwtClaimTypes.Name, "Jaliya Udagedara"),
-                        new Claim(JwtClaimTypes.GivenName, "Jaliya"),
-                        new Claim(JwtClaimTypes.FamilyName, "Udagedara"),
-                        new Claim(JwtClaimTypes.Email, "jaliya.udagedara@gmail.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://jaliyaudagedara.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
-                    }
+                    new Claim(JwtClaimTypes.Role, "Admin"),
+                    new Claim(JwtClaimTypes.Name, "Jaliya Udagedara"),
+                    new Claim(JwtClaimTypes.GivenName, "Jaliya"),
+                    new Claim(JwtClaimTypes.FamilyName, "Udagedara"),
+                    new Claim(JwtClaimTypes.Email, "jaliya.udagedara@gmail.com"),
+                    new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                    new Claim(JwtClaimTypes.WebSite, "http://jaliyaudagedara.com"),
+                    new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
                 }
             };
         }
