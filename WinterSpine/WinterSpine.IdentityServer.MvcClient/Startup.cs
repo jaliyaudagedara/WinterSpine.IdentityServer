@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace WinterSpine.Web
+namespace WinterSpine.IdentityServer.MvcClient
 {
     public class Startup
     {
@@ -63,7 +63,7 @@ namespace WinterSpine.Web
                 Authority = "http://localhost:10000",
                 RequireHttpsMetadata = false,
 
-                ClientId = "WinterSpine.Web",
+                ClientId = "WinterSpine.IdentityServer.MvcClient",
                 SaveTokens = true
             });
 
