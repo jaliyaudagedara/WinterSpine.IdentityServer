@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WinterSpine.Web": {
+    "WinterSpine.IdentityServer.MvcClient": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
