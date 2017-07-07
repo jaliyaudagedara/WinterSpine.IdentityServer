@@ -15,9 +15,9 @@ namespace WinterSpine.IdentityServer.MvcClient.Controllers
         }
 
         [Authorize]
-        public IActionResult Secure()
+        public IActionResult Claims()
         {
-            ViewData["Message"] = "Secure page.";
+            ViewData["Message"] = "Claims page.";
 
             return View();
         }
