@@ -32,7 +32,7 @@ namespace WinterSpine.IdentityServer.Configs
                     ClientName = "WinterSpine Web App",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     RedirectUris = {  "http://localhost:10001/signin-oidc" },
-                    PostLogoutRedirectUris={ "http://localhost:10001/signout-callback-oidc" },
+                    PostLogoutRedirectUris ={ "http://localhost:10001/signout-callback-oidc" },
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
