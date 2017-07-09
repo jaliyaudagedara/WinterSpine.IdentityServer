@@ -23,3 +23,4 @@ deploy:
   remove_files: true
   on:
     branch: master
+  artifact: WinterSpine.IdentityServer  
