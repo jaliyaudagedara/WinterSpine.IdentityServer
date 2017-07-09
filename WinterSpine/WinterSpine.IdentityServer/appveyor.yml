@@ -8,6 +8,10 @@ build:
   verbosity: minimal
 after_build:
   cmd: dotnet publish .\WinterSpine\WinterSpine.IdentityServer -o artifacts\publish\WinterSpine.IdentityServer -c Debug
+artifacts:
+- path: artifacts\publish\WinterSpine.IdentityServer
+  name: WinterSpine.IdentityServer
+  type: WebDeployPackage
 deploy:
 - provider: WebDeploy
   server: https://winterspine-identityserver.scm.azurewebsites.net:443/msdeploy.axd?site=WinterSpine-IdentityServer
