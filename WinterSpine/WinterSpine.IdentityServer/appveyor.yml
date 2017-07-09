@@ -1,0 +1,21 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+before_build:
+- cmd: dotnet restore .\WinterSpine\WinterSpine.IdentityServer\WinterSpine.IdentityServer.csproj
+build:
+  project: .\WinterSpine\WinterSpine.IdentityServer\WinterSpine.IdentityServer.csproj
+  publish_wap: true
+  verbosity: minimal
+after_build:
+  cmd: dotnet publish .\WinterSpine\WinterSpine.IdentityServer -o artifacts\publish\WinterSpine.IdentityServer -c Debug
+deploy:
+- provider: WebDeploy
+  server: https://winterspine-identityserver.scm.azurewebsites.net:443/msdeploy.axd?site=WinterSpine-IdentityServer
+  website: WinterSpine-IdentityServer
+  username: $WinterSpine-IdentityServer
+  password:
+    secure: tMHSmRwYSO/0dFqXWtxCeYVq0zWBwlU579KaEIwGTKLvt+GOMwhNymvyVnJnWbG7IqcAfel4jH29jnLd/IWTfA==
+  aspnet_core: true
+  remove_files: true
+  on:
+    branch: master
