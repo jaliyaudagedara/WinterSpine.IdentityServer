@@ -7,9 +7,9 @@ build:
   publish_wap: true
   verbosity: minimal
 after_build:
-  cmd: dotnet publish .\WinterSpine\WinterSpine.IdentityServer -o artifacts\publish\WinterSpine.IdentityServer -c Debug
+  cmd: dotnet publish .\WinterSpine\WinterSpine.IdentityServer -o publish\WinterSpine.IdentityServer -c Debug
 artifacts:
-- path: artifacts\publish\WinterSpine.IdentityServer
+- path: publish\WinterSpine.IdentityServer
   name: WinterSpine.IdentityServer
   type: WebDeployPackage
 deploy:
