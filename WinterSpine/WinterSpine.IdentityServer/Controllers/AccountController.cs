@@ -25,7 +25,6 @@ using WinterSpine.IdentityServer.ViewModels.Account;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
-    [SecurityHeaders]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;

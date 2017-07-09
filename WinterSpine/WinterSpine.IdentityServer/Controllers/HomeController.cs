@@ -7,7 +7,6 @@ using WinterSpine.IdentityServer.ViewModels;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
-    [SecurityHeaders]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;

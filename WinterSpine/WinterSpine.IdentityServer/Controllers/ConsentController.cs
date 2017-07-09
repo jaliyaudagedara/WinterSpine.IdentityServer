@@ -10,10 +10,6 @@ using WinterSpine.IdentityServer.ViewModels;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
-    /// <summary>
-    /// This controller processes the consent UI
-    /// </summary>
-    [SecurityHeaders]
     public class ConsentController : Controller
     {
         private readonly ConsentService _consent;
