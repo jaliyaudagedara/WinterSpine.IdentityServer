@@ -10,12 +10,20 @@ At this point, we are not aiming for a SAAS (May be in v2). For v1, the idea is 
 
 This Repo contains the IdentityServer and a MVC Client for testing.
 
+## Build Status
+
+### WinterSpine.IdentityServer
+[![Build status](https://ci.appveyor.com/api/projects/status/jf1v05eirw2an764/branch/master?svg=true)](https://ci.appveyor.com/project/jaliyaudagedara/winterspine-identityserver/branch/master)
+
+### WinterSpine.IdentityServer.MvcClient
+Not Configured
+
 ## Road Map (v1)
 
 * Initial IdentityServer4 Setup for OIDC - **DONE**
 * Integrate with ASP.NET Core Identity and EF Core - **DONE**
 * Initial Testing Client Application - **DONE**
-* Configure CI, setup a demo public environment
+* Configure CI, setup a demo public environment - **IN PROGRESS**
 * Admin Functionalities
     * CRUD IdentityServer Configurations
     * CRUD Clients and their configurations
