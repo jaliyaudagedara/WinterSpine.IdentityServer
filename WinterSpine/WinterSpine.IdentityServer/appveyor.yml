@@ -7,9 +7,9 @@ build:
   publish_wap: true
   verbosity: minimal
 after_build:
-  cmd: dotnet publish .\WinterSpine\WinterSpine.IdentityServer -o publish\WinterSpine.IdentityServer -c Debug
+- cmd: dotnet publish .\WinterSpine\WinterSpine.IdentityServer -o artifacts\publish\WinterSpine.IdentityServer -c Debug
 artifacts:
-- path: publish\WinterSpine.IdentityServer
+- path: artifacts\publish\WinterSpine.IdentityServer
   name: WinterSpine.IdentityServer
   type: WebDeployPackage
 deploy:
@@ -19,8 +19,8 @@ deploy:
   username: $WinterSpine-IdentityServer
   password:
     secure: tMHSmRwYSO/0dFqXWtxCeYVq0zWBwlU579KaEIwGTKLvt+GOMwhNymvyVnJnWbG7IqcAfel4jH29jnLd/IWTfA==
+  artifact: WinterSpine.IdentityServer
   aspnet_core: true
   remove_files: true
   on:
     branch: master
-  artifact: WinterSpine.IdentityServer  
