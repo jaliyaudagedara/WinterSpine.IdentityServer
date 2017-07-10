@@ -60,10 +60,10 @@ namespace WinterSpine.IdentityServer.MvcClient
                 AuthenticationScheme = "oidc",
                 SignInScheme = "Cookies",
 
-                Authority = "http://localhost:10000",
+                Authority = Configuration["Authentication:Authority"],
                 RequireHttpsMetadata = false,
 
-                ClientId = "WinterSpine.IdentityServer.MvcClient",
+                ClientId = Configuration["Authentication:ClientId"],
                 SaveTokens = true
             };
             options.Scope.Add("email"); // client requesting additioal claims
