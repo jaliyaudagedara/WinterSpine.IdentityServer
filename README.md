@@ -8,15 +8,11 @@ IdentityServer based on,
 
 At this point, we are not aiming for a SAAS (May be in v2). For v1, the idea is providing developers an internal fully fledged IdentityServer which uses OIDC, so they can easily plug in whatever the client applications they want. For instance Admin can CRUD clients and it's config (RedirectUris, The scopes clients can request etc. and there is a lot more), Users and their config etc.
 
-This Repo contains the IdentityServer and a MVC Client for testing.
+This Repo contains the IdentityServer. A MVC Client Application for testing the IdentityServer is maintained at [WinterSpine.IdentityServer.MvcClient](https://github.com/jaliyaudagedara/WinterSpine.IdentityServer.MvcClient) Repo.
 
 ## Build Status
 
-### WinterSpine.IdentityServer
 [![Build status](https://ci.appveyor.com/api/projects/status/jf1v05eirw2an764/branch/master?svg=true)](https://ci.appveyor.com/project/jaliyaudagedara/winterspine-identityserver/branch/master)
-
-### WinterSpine.IdentityServer.MvcClient
-Not Configured
 
 ## Road Map (v1)
 
