@@ -7,9 +7,9 @@ using WinterSpine.IdentityServer.Models.Shared;
 
 namespace WinterSpine.IdentityServer.Models.Clients
 {
-    public class RegisterClientViewModel
+    public class Client
     {
-        public RegisterClientViewModel()
+        public Client()
         {
             AllowedScopes = new List<CheckBoxListItem>();
         }

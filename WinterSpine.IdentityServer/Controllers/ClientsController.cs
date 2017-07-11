@@ -23,7 +23,7 @@ namespace WinterSpine.IdentityServer.Controllers
         // GET: Clients
         public ActionResult Index()
         {
-            List<RegisterClientViewModel> clients = _configurationDbContext.Clients.Select(client => new RegisterClientViewModel()
+            List<Client> clients = _configurationDbContext.Clients.Select(client => new Client()
             {
                 ClientId = client.ClientId,
                 ClientName = client.ClientName,
@@ -49,7 +49,7 @@ namespace WinterSpine.IdentityServer.Controllers
         // GET: Clients/Create
         public ActionResult Create()
         {
-            RegisterClientViewModel vm = new RegisterClientViewModel();
+            Client vm = new Client();
             vm.AllowedScopes.Add(new CheckBoxListItem()
             {
                 Display = "OpenID",
@@ -97,7 +97,7 @@ namespace WinterSpine.IdentityServer.Controllers
                 .Include(c => c.AllowedScopes)
                 .FirstOrDefault(c => c.ClientId == id);
 
-            RegisterClientViewModel vm = new RegisterClientViewModel()
+            Client vm = new Client()
             {
                 ClientId = client.ClientId,
                 ClientName = client.ClientName,
