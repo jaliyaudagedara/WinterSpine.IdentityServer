@@ -1,0 +1,13 @@
+﻿@model WinterSpine.IdentityServer.ViewModels.Shared.CheckBoxListItem
+
+<li class="list-group-item">
+    <label>
+        <input class="consent-scopecheck"
+               type="checkbox"
+               name="AllowedScopes"
+               id="scopes_@Model.Display"
+               value="@Model.Value"
+               checked="@Model.IsChecked" />
+        <strong>@Model.Display</strong>
+    </label>
+</li>

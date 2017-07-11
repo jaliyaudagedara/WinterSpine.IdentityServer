@@ -1,0 +1,68 @@
+@model WinterSpine.IdentityServer.ViewModels.Clients.RegisterClientViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Create a new client</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ClientId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClientId" class="form-control" />
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClientName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClientName" class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="RedirectUri" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="RedirectUri" class="form-control" />
+                <span asp-validation-for="RedirectUri" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PostLogoutRedirectUri" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PostLogoutRedirectUri" class="form-control" />
+                <span asp-validation-for="PostLogoutRedirectUri" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AllowedScopes" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <ul class="list-group">
+                    @foreach (var scope in Model.AllowedScopes)
+                    {
+                        @Html.Partial("~/Views/Shared/EditorTemplates/CheckBoxListItem.cshtml", scope)
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,53 @@
+@model IEnumerable<WinterSpine.IdentityServer.ViewModels.Clients.RegisterClientViewModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RedirectUri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostLogoutRedirectUri)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RedirectUri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostLogoutRedirectUri)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { Id = item.ClientId }) |
+                    @Html.ActionLink("Details", "Details", new { Id = item.ClientId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
