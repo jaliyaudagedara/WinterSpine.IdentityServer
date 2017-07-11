@@ -57,23 +57,43 @@ namespace WinterSpine.IdentityServer.Configs
             };
         }
 
-        public static TestUser GetAdminUser()
+        public static List<TestUser> GetUsers()
         {
-            return new TestUser()
+            return new List<TestUser>()
             {
-                SubjectId = Guid.Empty.ToString(),
-                Username = "admin",
-                Password = "P@ssw0rd!",
-                Claims = new List<Claim>()
+                new TestUser()
                 {
-                    new Claim(JwtClaimTypes.Role, "Admin"),
-                    new Claim(JwtClaimTypes.Name, "Jaliya Udagedara"),
-                    new Claim(JwtClaimTypes.GivenName, "Jaliya"),
-                    new Claim(JwtClaimTypes.FamilyName, "Udagedara"),
-                    new Claim(JwtClaimTypes.Email, "jaliya.udagedara@gmail.com"),
-                    new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                    new Claim(JwtClaimTypes.WebSite, "http://jaliyaudagedara.com"),
-                    new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
+                    SubjectId = Guid.Empty.ToString(),
+                    Username = "admin",
+                    Password = "P@ssw0rd!",
+                    Claims = new List<Claim>()
+                    {
+                        new Claim(JwtClaimTypes.Role, "Admin"),
+                        new Claim(JwtClaimTypes.Name, "Jaliya Udagedara"),
+                        new Claim(JwtClaimTypes.GivenName, "Jaliya"),
+                        new Claim(JwtClaimTypes.FamilyName, "Udagedara"),
+                        new Claim(JwtClaimTypes.Email, "jaliya.udagedara@gmail.com"),
+                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        new Claim(JwtClaimTypes.WebSite, "http://jaliyaudagedara.com"),
+                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
+                    }
+                },
+                new TestUser()
+                {
+                    SubjectId = new Guid("11111111-1111-1111-1111-111111111111").ToString(),
+                    Username = "demo",
+                    Password = "Welcome@123",
+                    Claims = new List<Claim>()
+                    {
+                        new Claim(JwtClaimTypes.Role, "User"),
+                        new Claim(JwtClaimTypes.Name, "John Doe"),
+                        new Claim(JwtClaimTypes.GivenName, "John"),
+                        new Claim(JwtClaimTypes.FamilyName, "Doe"),
+                        new Claim(JwtClaimTypes.Email, "john@doe.com"),
+                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        new Claim(JwtClaimTypes.WebSite, "http://johndoe.com"),
+                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
+                    }
                 }
             };
         }
