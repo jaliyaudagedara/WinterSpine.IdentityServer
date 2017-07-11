@@ -3,9 +3,7 @@ using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using WinterSpine.IdentityServer.Attributes;
 using WinterSpine.IdentityServer.Services;
-using WinterSpine.IdentityServer.Utilities;
 using WinterSpine.IdentityServer.Models;
 
 namespace WinterSpine.IdentityServer.Controllers

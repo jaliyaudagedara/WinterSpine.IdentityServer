@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Threading.Tasks;
 using WinterSpine.IdentityServer.Configs;
-using WinterSpine.IdentityServer.Utilities;
 using WinterSpine.IdentityServer.Models;
 
 namespace WinterSpine.IdentityServer.Services

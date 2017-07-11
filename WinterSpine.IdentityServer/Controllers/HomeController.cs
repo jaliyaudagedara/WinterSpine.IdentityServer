@@ -1,8 +1,6 @@
 ﻿using IdentityServer4.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using WinterSpine.IdentityServer.Attributes;
-using WinterSpine.IdentityServer.Utilities;
 using WinterSpine.IdentityServer.Models;
 
 namespace WinterSpine.IdentityServer.Controllers

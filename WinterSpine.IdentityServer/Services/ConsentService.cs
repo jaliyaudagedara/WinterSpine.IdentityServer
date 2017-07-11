@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System;
 using IdentityServer4;
 using WinterSpine.IdentityServer.Models;
-using WinterSpine.IdentityServer.Utilities;
 using WinterSpine.IdentityServer.Configs;
 
 namespace WinterSpine.IdentityServer.Services
