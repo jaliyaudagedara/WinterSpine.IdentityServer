@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WinterSpine.IdentityServer.ViewModels.Shared
+namespace WinterSpine.IdentityServer.Models.Shared
 {
     public class CheckBoxListItem
     {

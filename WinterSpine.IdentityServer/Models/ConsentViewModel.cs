@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WinterSpine.IdentityServer.ViewModels
+namespace WinterSpine.IdentityServer.Models
 {
     public class ConsentViewModel : ConsentInputModel
     {

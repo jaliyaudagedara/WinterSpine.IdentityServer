@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WinterSpine.IdentityServer.Utilities;
 
-namespace WinterSpine.IdentityServer.ViewModels
+namespace WinterSpine.IdentityServer.Models
 {
     public class LoginViewModel : LoginInputModel
     {

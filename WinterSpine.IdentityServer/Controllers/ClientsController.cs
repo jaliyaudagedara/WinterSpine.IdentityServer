@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WinterSpine.IdentityServer.ViewModels.Clients;
+using WinterSpine.IdentityServer.Models.Clients;
 using IdentityServer4.EntityFramework.DbContexts;
-using WinterSpine.IdentityServer.ViewModels.Shared;
+using WinterSpine.IdentityServer.Models.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace WinterSpine.IdentityServer.Controllers

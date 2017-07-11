@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using WinterSpine.IdentityServer.ViewModels.Shared;
+using WinterSpine.IdentityServer.Models.Shared;
 
-namespace WinterSpine.IdentityServer.ViewModels.Clients
+namespace WinterSpine.IdentityServer.Models.Clients
 {
     public class RegisterClientViewModel
     {

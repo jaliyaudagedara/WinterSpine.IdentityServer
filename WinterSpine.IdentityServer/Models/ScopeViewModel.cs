@@ -1,4 +1,4 @@
-﻿namespace WinterSpine.IdentityServer.ViewModels
+﻿namespace WinterSpine.IdentityServer.Models
 {
     public class ScopeViewModel
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using WinterSpine.IdentityServer.Attributes;
 using WinterSpine.IdentityServer.Services;
 using WinterSpine.IdentityServer.Utilities;
-using WinterSpine.IdentityServer.ViewModels;
+using WinterSpine.IdentityServer.Models;
 
 namespace WinterSpine.IdentityServer.Controllers
 {

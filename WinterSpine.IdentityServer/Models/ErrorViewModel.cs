@@ -1,6 +1,6 @@
 ﻿using IdentityServer4.Models;
 
-namespace WinterSpine.IdentityServer.ViewModels
+namespace WinterSpine.IdentityServer.Models
 {
     public class ErrorViewModel
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using IdentityServer4;
-using WinterSpine.IdentityServer.ViewModels;
+using WinterSpine.IdentityServer.Models;
 using WinterSpine.IdentityServer.Utilities;
 using WinterSpine.IdentityServer.Configs;
 

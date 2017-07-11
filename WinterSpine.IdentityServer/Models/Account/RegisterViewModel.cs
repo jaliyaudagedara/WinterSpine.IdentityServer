@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WinterSpine.IdentityServer.ViewModels.Account
+namespace WinterSpine.IdentityServer.Models.Account
 {
     public class RegisterViewModel
     {

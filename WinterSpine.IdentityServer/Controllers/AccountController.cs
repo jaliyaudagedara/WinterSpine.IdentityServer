@@ -14,14 +14,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using IdentityServer4;
 using WinterSpine.IdentityServer.Utilities;
-using WinterSpine.IdentityServer.ViewModels;
+using WinterSpine.IdentityServer.Models;
 using WinterSpine.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using WinterSpine.IdentityServer.Attributes;
 using WinterSpine.IdentityServer.Configs;
 using Microsoft.AspNetCore.Authorization;
-using WinterSpine.IdentityServer.ViewModels.Account;
+using WinterSpine.IdentityServer.Models.Account;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
