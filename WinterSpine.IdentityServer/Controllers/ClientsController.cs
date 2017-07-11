@@ -8,9 +8,11 @@ using WinterSpine.IdentityServer.Models.Clients;
 using IdentityServer4.EntityFramework.DbContexts;
 using WinterSpine.IdentityServer.Models.Shared;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
+    [Authorize]
     public class ClientsController : Controller
     {
         private ConfigurationDbContext _configurationDbContext;
@@ -20,7 +22,6 @@ namespace WinterSpine.IdentityServer.Controllers
             _configurationDbContext = configurationDbContext;
         }
 
-        // GET: Clients
         public ActionResult Index()
         {
             List<ClientViewModel> clients = _configurationDbContext.Clients.Select(client => new ClientViewModel()
@@ -41,13 +42,11 @@ namespace WinterSpine.IdentityServer.Controllers
             return View(clients);
         }
 
-        // GET: Clients/Details/5
         public ActionResult Details(int id)
         {
             return Edit(id);
         }
 
-        // GET: Clients/Create
         public ActionResult Create()
         {
             ClientViewModel vm = new ClientViewModel();
@@ -73,7 +72,6 @@ namespace WinterSpine.IdentityServer.Controllers
             return View(vm);
         }
 
-        // POST: Clients/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -89,7 +87,6 @@ namespace WinterSpine.IdentityServer.Controllers
             }
         }
 
-        // GET: Clients/Edit/5
         public ActionResult Edit(int id)
         {
             var client = _configurationDbContext.Clients

@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using WinterSpine.IdentityServer.Configs;
 using Microsoft.AspNetCore.Authorization;
-using WinterSpine.IdentityServer.Models.Account;
+using WinterSpine.IdentityServer.Models.Users;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
@@ -112,35 +112,6 @@ namespace WinterSpine.IdentityServer.Controllers
             await HttpContext.Authentication.SignOutAsync();
 
             return View("LoggedOut", vm);
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                var identityUser = new IdentityUser(model.UserName)
-                {
-                    Id = Guid.NewGuid().ToString()
-                };
-
-                await _userManager.CreateAsync(identityUser, model.Password);
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
         }
     }
 }
