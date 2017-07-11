@@ -25,6 +25,7 @@ namespace WinterSpine.IdentityServer.Controllers
         {
             List<Client> clients = _configurationDbContext.Clients.Select(client => new Client()
             {
+                Id = client.Id,
                 ClientId = client.ClientId,
                 ClientName = client.ClientName,
                 RedirectUri = client.RedirectUris.FirstOrDefault().RedirectUri,
@@ -41,7 +42,7 @@ namespace WinterSpine.IdentityServer.Controllers
         }
 
         // GET: Clients/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             return Edit(id);
         }
@@ -89,13 +90,13 @@ namespace WinterSpine.IdentityServer.Controllers
         }
 
         // GET: Clients/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             var client = _configurationDbContext.Clients
                 .Include(c => c.RedirectUris)
                 .Include(c => c.PostLogoutRedirectUris)
                 .Include(c => c.AllowedScopes)
-                .FirstOrDefault(c => c.ClientId == id);
+                .FirstOrDefault(c => c.Id == id);
 
             Client vm = new Client()
             {
@@ -114,7 +115,6 @@ namespace WinterSpine.IdentityServer.Controllers
             return View(vm);
         }
 
-        // POST: Clients/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -129,13 +129,11 @@ namespace WinterSpine.IdentityServer.Controllers
             }
         }
 
-        // GET: Clients/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Clients/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

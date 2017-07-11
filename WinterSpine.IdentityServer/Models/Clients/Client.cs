@@ -14,21 +14,20 @@ namespace WinterSpine.IdentityServer.Models.Clients
             AllowedScopes = new List<CheckBoxListItem>();
         }
 
+        public int Id { get; set; }
+
         [Required]
         [Display(Name = "Client ID")]
         public string ClientId { get; set; }
 
         [Required]
-        [EmailAddress]
         [Display(Name = "Client Name")]
         public string ClientName { get; set; }
 
         [Required]
-        [DataType(DataType.Url)]
         [Display(Name = "Redirect Uri")]
         public string RedirectUri { get; set; }
 
-        [DataType(DataType.Url)]
         [Display(Name = "Post Logout Redirect Uri")]
         public string PostLogoutRedirectUri { get; set; }
 
