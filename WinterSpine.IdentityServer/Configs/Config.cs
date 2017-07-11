@@ -7,22 +7,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using static IdentityServer4.IdentityServerConstants;
 
 namespace WinterSpine.IdentityServer.Configs
 {
     public class Config
     {
-        public static IEnumerable<IdentityResource> GetIdentityResources()
+        internal static IEnumerable<IdentityResource> GetIdentityResources()
         {
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
+                new IdentityResource("role", "Role", new List<string>{ "role" })
             };
         }
 
-        public static IEnumerable<Client> GetClients()
+        internal static IEnumerable<Client> GetClients()
         {
             return new List<Client>()
             {
@@ -35,9 +37,10 @@ namespace WinterSpine.IdentityServer.Configs
                     PostLogoutRedirectUris ={ "http://localhost:10000/signout-callback-oidc" },
                     AllowedScopes = new List<string>
                     {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email
+                        StandardScopes.OpenId,
+                        StandardScopes.Profile,
+                        StandardScopes.Email,
+                        ClaimTypes.Role
                     }
                 },
                 new Client()
@@ -49,15 +52,16 @@ namespace WinterSpine.IdentityServer.Configs
                     PostLogoutRedirectUris ={ "http://localhost:10001/signout-callback-oidc" },
                     AllowedScopes = new List<string>
                     {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email
+                        StandardScopes.OpenId,
+                        StandardScopes.Profile,
+                        StandardScopes.Email,
+                        ClaimTypes.Role
                     }
                 }
             };
         }
 
-        public static List<TestUser> GetUsers()
+        internal static List<TestUser> GetUsers()
         {
             return new List<TestUser>()
             {
@@ -73,7 +77,7 @@ namespace WinterSpine.IdentityServer.Configs
                         new Claim(JwtClaimTypes.GivenName, "Jaliya"),
                         new Claim(JwtClaimTypes.FamilyName, "Udagedara"),
                         new Claim(JwtClaimTypes.Email, "jaliya.udagedara@gmail.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        new Claim(JwtClaimTypes.EmailVerified, "true", System.Security.Claims.ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://jaliyaudagedara.com"),
                         new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
                     }
@@ -90,7 +94,7 @@ namespace WinterSpine.IdentityServer.Configs
                         new Claim(JwtClaimTypes.GivenName, "John"),
                         new Claim(JwtClaimTypes.FamilyName, "Doe"),
                         new Claim(JwtClaimTypes.Email, "john@doe.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        new Claim(JwtClaimTypes.EmailVerified, "true", System.Security.Claims.ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://johndoe.com"),
                         new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'WinterSpine Way', 'locality': 'English', 'postal_code': 55555, 'country': 'United States' }", IdentityServerConstants.ClaimValueTypes.Json)
                     }

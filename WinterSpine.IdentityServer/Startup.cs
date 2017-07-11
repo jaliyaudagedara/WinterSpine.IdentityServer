@@ -92,13 +92,21 @@ namespace WinterSpine.IdentityServer
                 AuthenticationScheme = "oidc",
                 SignInScheme = "Cookies",
 
-                Authority = "http://localhost:10000",
+                Authority = "http://localhost:10000/",
                 RequireHttpsMetadata = false,
 
                 ClientId = "WinterSpine.IdentityServer.Web",
-                SaveTokens = true
+                SaveTokens = true,
+
+                TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role"
+                }
             };
+
             options.Scope.Add("email");
+            options.Scope.Add("role");
             app.UseOpenIdConnectAuthentication(options);
 
             app.UseStaticFiles();

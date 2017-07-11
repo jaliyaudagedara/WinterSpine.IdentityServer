@@ -3,10 +3,17 @@
 @using IdentityServer4.Extensions
 @{
     string name = null;
+    string role = null;
     if (!true.Equals(ViewData["signed-out"]))
     {
         var user = await Context.GetIdentityServerUserAsync();
         name = user?.FindFirst("name")?.Value;
+
+        if (name != null)
+        {
+
+            role = User.Claims.FirstOrDefault(c => c.Type == "role")?.Value;
+        }
     }
 }
 <!DOCTYPE html>
@@ -45,27 +52,31 @@
                 {
                     <ul class="nav navbar-nav navbar-right">
                         <li><a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @name</a></li>
+
+                        @if (role == "Admin")
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-area="" asp-controller="Clients" asp-action="Index">View</a></li>
+                                    <li><a asp-area="" asp-controller="Clients" asp-action="Create">Create</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-area="" asp-controller="Users" asp-action="Index">View</a></li>
+                                    <li><a asp-area="" asp-controller="Users" asp-action="Create">Create</a></li>
+                                </ul>
+                            </li>
+                        }
                         <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
                     </ul>
                 }
                 else
                 {
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-area="" asp-controller="Clients" asp-action="Index">View</a></li>
-                                <li><a asp-area="" asp-controller="Clients" asp-action="Create">Create</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-area="" asp-controller="Users" asp-action="Index">View</a></li>
-                                <li><a asp-area="" asp-controller="Users" asp-action="Create">Create</a></li>
-                            </ul>
-                        </li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Log in</a></li>
                     </ul>
                 }
             </div>

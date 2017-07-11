@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using WinterSpine.IdentityServer.Configs;
 using Microsoft.AspNetCore.Authorization;
 using WinterSpine.IdentityServer.Models.Users;
+using IdentityServer4.Models;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
@@ -110,6 +111,8 @@ namespace WinterSpine.IdentityServer.Controllers
 
             // delete local authentication cookie
             await HttpContext.Authentication.SignOutAsync();
+            await HttpContext.Authentication.SignOutAsync("Cookies");
+
 
             return View("LoggedOut", vm);
         }

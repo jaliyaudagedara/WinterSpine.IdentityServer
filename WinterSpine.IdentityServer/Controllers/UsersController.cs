@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using WinterSpine.IdentityServer.Models.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private UserManager<IdentityUser> _userManager;

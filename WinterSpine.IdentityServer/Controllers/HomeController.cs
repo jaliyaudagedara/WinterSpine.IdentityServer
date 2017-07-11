@@ -1,10 +1,12 @@
 ﻿using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WinterSpine.IdentityServer.Models;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;

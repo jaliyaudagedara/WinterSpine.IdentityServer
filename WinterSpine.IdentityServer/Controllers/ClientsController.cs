@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WinterSpine.IdentityServer.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ClientsController : Controller
     {
         private ConfigurationDbContext _configurationDbContext;
@@ -24,6 +24,10 @@ namespace WinterSpine.IdentityServer.Controllers
 
         public ActionResult Index()
         {
+            Dictionary<string, string> claims = new Dictionary<string, string>();
+
+            var c = User.Claims;
+
             List<ClientViewModel> clients = _configurationDbContext.Clients.Select(client => new ClientViewModel()
             {
                 Id = client.Id,
