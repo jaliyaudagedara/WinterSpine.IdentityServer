@@ -19,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.ClientName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RedirectUri)
+                @Html.DisplayNameFor(model => model.RedirectUris)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PostLogoutRedirectUri)
+                @Html.DisplayNameFor(model => model.PostLogoutRedirectUris)
             </th>
             <th></th>
         </tr>
@@ -38,10 +38,10 @@
                     @Html.DisplayFor(modelItem => item.ClientName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RedirectUri)
+                    @Html.Partial("~/Views/Clients/DisplayTemplates/ClientUrisDisplay.cshtml", item.RedirectUris)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PostLogoutRedirectUri)
+                    @Html.Partial("~/Views/Clients/DisplayTemplates/ClientUrisDisplay.cshtml", item.PostLogoutRedirectUris)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |

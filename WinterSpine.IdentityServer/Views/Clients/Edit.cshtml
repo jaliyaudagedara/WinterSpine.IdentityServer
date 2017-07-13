@@ -1,4 +1,5 @@
-@model WinterSpine.IdentityServer.Models.Clients.ClientViewModel
+@using WinterSpine.IdentityServer.Models.Clients
+@model ClientViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -26,17 +27,37 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="RedirectUri" class="col-md-2 control-label"></label>
+            <label asp-for="RedirectUris" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="RedirectUri" class="form-control" />
-                <span asp-validation-for="RedirectUri" class="text-danger"></span>
+                <ul id="listRedirectUris" class="list-group">
+                    @for (int i = 0; i < Model.RedirectUris.Count; i++)
+                    {
+                        <li>
+                            @Html.HiddenFor(m => Model.RedirectUris[i].Id)
+                            @Html.EditorFor(m => Model.RedirectUris[i].RedirectUri, new { htmlAttributes = new { @class = "form-control" } })
+                            <a href="#" onclick="onRemoved(this, 'RedirectUris')">Delete</a>
+                        </li>
+                    }
+                </ul>
+
+                <input id="btnAddRedirectUri" type="button" onclick="onAdded('RedirectUris')" value="Add" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="PostLogoutRedirectUri" class="col-md-2 control-label"></label>
+            <label asp-for="PostLogoutRedirectUris" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="PostLogoutRedirectUri" class="form-control" />
-                <span asp-validation-for="PostLogoutRedirectUri" class="text-danger"></span>
+                <ul id="listPostLogoutRedirectUris" class="list-group">
+                    @for (int i = 0; i < Model.PostLogoutRedirectUris.Count; i++)
+                    {
+                        <li>
+                            @Html.HiddenFor(m => Model.PostLogoutRedirectUris[i].Id)
+                            @Html.EditorFor(m => Model.PostLogoutRedirectUris[i].RedirectUri, new { htmlAttributes = new { @class = "form-control" } })
+                            <a href="#" onclick="onRemoved(this, 'PostLogoutRedirectUris')">Delete</a>
+                        </li>
+                    }
+                </ul>
+
+                <input id="btnAddPostLogoutRedirectUri" type="button" onclick="onAdded('PostLogoutRedirectUris')" value="Add" />
             </div>
         </div>
         <div class="form-group">
@@ -53,4 +74,32 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(function () {
+            // TODO: Add Click events etc.
+        });
+
+        function onAdded(name) {
+            var i = $("#list" + name + " li").length;
+            $("#list" + name).append('<li><input class="form-control text-box single-line valid" id="' + name + '_' + i + '__RedirectUri" name="' + name + '[' + i + '].RedirectUri" type="text" value="" aria-invalid="false">' +
+                '<a href="#" onclick="onRemoved(this, name)">Delete</a>' +
+                '</li > ');
+        }
+
+        function onRemoved(control, name) {
+            console.log(name);
+            $(control).parent().remove();
+            fnUpdateList(name);
+        }
+
+        function fnUpdateList(name) {
+            var ul = document.getElementById("list" + name);
+            var items = ul.getElementsByTagName("li");
+            for (var i = 0; i < items.length; ++i) {
+                $(items[i]).find("input[name^='RedirectUri']").attr('id', name + '_' + i + '__RedirectUri');
+                $(items[i]).find("input[name^='RedirectUri']").attr('name', name + '[' + i + '].RedirectUri');
+            }
+        }
+    </script>
 }

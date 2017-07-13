@@ -1,0 +1,17 @@
+@using WinterSpine.IdentityServer.Models.Clients
+
+@model IEnumerable<ClientRedirectUriViewModel>
+
+@if (Model == null)
+{
+    <p>No Urls defined</p>
+    return;
+}
+
+<ul class="list-group">
+    @foreach (ClientRedirectUriViewModel item in Model)
+    {
+        <li><a href="@item.RedirectUri">@item.RedirectUri</a> </li>
+    }
+</ul>
+
