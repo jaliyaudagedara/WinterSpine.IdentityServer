@@ -40,7 +40,7 @@ namespace WinterSpine.IdentityServer.Configs
                         StandardScopes.OpenId,
                         StandardScopes.Profile,
                         StandardScopes.Email,
-                        ClaimTypes.Role
+                        JwtClaimTypes.Role
                     }
                 },
                 new Client()
@@ -55,7 +55,7 @@ namespace WinterSpine.IdentityServer.Configs
                         StandardScopes.OpenId,
                         StandardScopes.Profile,
                         StandardScopes.Email,
-                        ClaimTypes.Role
+                        JwtClaimTypes.Role
                     }
                 }
             };
