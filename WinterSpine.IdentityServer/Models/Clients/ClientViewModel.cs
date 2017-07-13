@@ -25,11 +25,11 @@ namespace WinterSpine.IdentityServer.Models.Clients
         public string ClientName { get; set; }
 
         [Required]
-        [Display(Name = "Redirect Uri")]
-        public string RedirectUri { get; set; }
+        [Display(Name = "Redirect Uris")]
+        public List<ClientRedirectUriViewModel> RedirectUris { get; set; }
 
-        [Display(Name = "Post Logout Redirect Uri")]
-        public string PostLogoutRedirectUri { get; set; }
+        [Display(Name = "Post Logout Redirect Uris")]
+        public List<ClientRedirectUriViewModel> PostLogoutRedirectUris { get; set; }
 
         [Display(Name = "Allowed Scopes")]
         public List<CheckBoxListItem> AllowedScopes { get; set; }
