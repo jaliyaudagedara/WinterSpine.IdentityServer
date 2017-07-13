@@ -92,10 +92,10 @@ namespace WinterSpine.IdentityServer
                 AuthenticationScheme = "oidc",
                 SignInScheme = "Cookies",
 
-                Authority = "http://localhost:10000/",
+                Authority = Configuration["Authentication:Authority"],
                 RequireHttpsMetadata = false,
 
-                ClientId = "WinterSpine.IdentityServer.Web",
+                ClientId = Configuration["Authentication:ClientId"],
                 SaveTokens = true,
 
                 TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
